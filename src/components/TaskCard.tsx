@@ -5,9 +5,12 @@ interface Props {
 }
 
 export default function TaskCard({task}: Props) {
-  return <div>
-    <h2>
-      {task.title}
-    </h2>          
+  return <div className="card card-body bg-primary rounded-0" >
+    <h2>{task.title}</h2>
+    <p> {task.id} </p>
+    <p>{task.description}</p>
+    <button className="btn btn-danger">
+      Delete
+    </button>
   </div>;
 }
