@@ -13,11 +13,13 @@ type HandleInputChange =
 
 
 export default function TaskForm({addNewTask}: Props) {
-  
-    const [task, setTask] = useState({
-      title: '', 
-      description: ''
-    })
+
+  const initialState = {
+    title: '', 
+    description: ''
+  }
+
+    const [task, setTask] = useState(initialState)
     
     // (e: ChangeEvent<HTMLInputElement>) Lo que hace es tipar la variable "e" con un tipo específico de funciones de React llamado ChangeEvent. A éste se le indica a qué tipo de elemento se le aplica, que para efectos de este caso es un HTMLInputElement
     const handleInputChange = ({
@@ -27,6 +29,7 @@ export default function TaskForm({addNewTask}: Props) {
     const handleNewTask = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       addNewTask(task);
+      setTask(initialState);
     }
 
 
@@ -41,6 +44,7 @@ export default function TaskForm({addNewTask}: Props) {
             name="title"
             className="form-control mb-3 rounded border-0"
             onChange={handleInputChange}
+            value={task.title}
             />
 
             <textarea 
@@ -50,6 +54,7 @@ export default function TaskForm({addNewTask}: Props) {
               placeholder='Write a description'
               className="form-control mb-3 rounded border-0"
               onChange={handleInputChange}
+              value={task.description}
             ></textarea>
 
 
