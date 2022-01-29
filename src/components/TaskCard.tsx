@@ -5,7 +5,7 @@ interface Props {
 }
 
 export default function TaskCard({task}: Props) {
-  return <div className="card card-body bg-primary rounded-0" >
+  return <div className="card card-body bg-secondary text-dark rounded" >
     <h2>{task.title}</h2>
     <p> {task.id} </p>
     <p>{task.description}</p>

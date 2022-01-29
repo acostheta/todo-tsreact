@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
+import TaskForm from './components/TaskForm';
 import Task from './interfaces/Task.interface';
 import logo from './logo.svg';
 
@@ -17,6 +18,8 @@ export function App({title}: Props) {
     description: "Learn React with videos",
     completed: false
   }]);
+  
+  const addNewTask = (task: Task) => setTasks([...tasks, task])
 
   return (
     <div className="bg-dark text-white" style={{height: '100vh'}}>
@@ -30,7 +33,18 @@ export function App({title}: Props) {
       </nav>
 
       <main className="container p-4">
-        <TaskList tasks={tasks} />
+        <div className="row">
+          <div className="col-md-4">
+            <TaskForm addNewTask={addNewTask}  />
+          </div>
+
+          <div className="col-md-8">
+            <div className="row">
+              <TaskList tasks={tasks} />
+            </div>
+          </div>
+
+        </div>
       </main>
 
     </div>
